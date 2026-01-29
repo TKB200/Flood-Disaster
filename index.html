@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flood Disaster Citizen Data Collection</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="background-overlay"></div>
+
+    <main class="container">
+        <header class="header">
+            <div class="logo-area">
+                <img src="Emblem_of_Sri_Lanka.svg.png" alt="Emblem of Sri Lanka" class="emblem">
+                <div class="title-group">
+                    <h1>Flood Disaster Relief</h1>
+                    <h2>Citizen Data Collection Portal</h2>
+                </div>
+            </div>
+            <p class="subtitle">Please provide accurate details</br>to assist with the relief efforts.</p>
+        </header>
+
+        <form id="reliefForm" class="glass-form">
+            <div class="form-grid">
+                <!-- Personal Identification -->
+                <div class="form-section full-width">
+                    <h3>Personal Identification</h3><br>
+                    <h3>පුද්ගලික තොරතුරු</h3>
+                </div>
+
+                <div class="input-group">
+                    <label for="nic">Citizen NIC Number/ ජා.හැ.අංකය </label>
+                    <input type="text" id="nic" name="nic" placeholder="e.g., 199012345678" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="fullName">Full Name/ සම්පූර්ණ නම </label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Gender/ ස්ත්‍රී පුරුශ භාවය </label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="gender" value="Male/පිරිමි" required>
+                            <span class="radio-custom"></span>
+                            Male
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="gender" value="Female/ස්ත්‍රී">
+                            <span class="radio-custom"></span>
+                            Female
+                        </label>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="dob">Date of Birth/ </label>
+                    <input type="date" id="dob" name="dob" required>
+                </div>
+
+                <!-- Contact & Location -->
+                <div class="form-section full-width">
+                    <h3>Location & Contact Details</h3>
+                </div>
+
+                <div class="input-group full-width">
+                    <label for="address">Permanent Address/ ස්ථිර පදිංචි ලිපිනය </label>
+                    <textarea id="address" name="address" rows="2" placeholder="Enter your permanent address"
+                        required></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label for="hometown">Home Town/ගම</label>
+                    <input type="text" id="hometown" name="hometown" placeholder="e.g., Kandy" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="agOffice">AG Office Location/ ප්‍රාදේශීය ලේකම් කාර්යාලය</label>
+                    <input type="text" id="agOffice" name="agOffice" placeholder="Divisional Secretariat" required>
+                    <small class="hint">Enter your Divisional Secretariat Division</small>
+                </div>
+
+                <div class="input-group">
+                    <label for="province">Province/ පළාත</label>
+                    <select id="province" name="province" required>
+                        <option value="" disabled selected>Select Province</option>
+                        <option value="Western">Western/බස්නාහිර</option>
+                        <option value="Central">Central/මධ්‍යම</option>
+                        <option value="Southern">Southern/දකුණ</option>
+                        <option value="Northern">Northern/උතුර</option>
+                        <option value="Eastern">Eastern/නැගෙනහිර</option>
+                        <option value="North Central">North Central/උතුරු මැද</option>
+                        <option value="North Western">North Western/වයඹ</option>
+                        <option value="Uva">Uva/ඌව</option>
+                        <option value="Sabaragamuwa">Sabaragamuwa/සබරගමුව</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="district">District/ දිස්ත්‍රික්කය</label>
+                    <select id="district" name="district" required>
+                        <option value="" disabled selected>Select District</option>
+                        <!-- Will be populated by JS based on Province, or full list -->
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="teleNumber">Telephone Number/ දුරකථන අංකය</label>
+                    <input type="tel" id="teleNumber" name="teleNumber" placeholder="07XXXXXXXX" pattern="[0-9]{10}"
+                        required>
+                </div>
+
+                <!-- Family Details -->
+                <div class="form-section full-width">
+                    <h3>Family Details/ පවුලේ විස්තර</h3>
+                </div>
+
+                <div class="input-group">
+                    <label for="familyMembers">Number of Family Members/ පවුලේ සාමාජිකයින් සංඛ්‍යාව</label>
+                    <input type="number" id="familyMembers" name="familyMembers" min="1" placeholder="e.g., 4" required>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="submit-btn">Submit Information</button>
+            </div>
+        </form>
+    </main>
+
+    <div id="notification" class="notification hidden">
+        <div class="notification-content">
+            <span class="icon">✓</span>
+            <p>Data submitted successfully !, Thank you!/දත්ත සාර්ථකව ඉදිරිපත් කරන ලදී !, ඔබට ස්තුතියි!</p>
+        </div>
+    </div>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("2v-ZV-reQ1aX-0GRH");
+        })();
+    </script>
+    <script src="script.js"></script>
+</body>
+
+
+</html>
